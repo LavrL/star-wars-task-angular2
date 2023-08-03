@@ -1,0 +1,38 @@
+<input #filter
+       class="inputForm"
+       type="search"
+       placeholder="Search for Star Wars characters"
+       (input)="onInput(filter.value)">
+
+
+<div *ngIf="characters$ | async as characterList; else loading" class="displayCenter">
+  <table class="tableContainer">
+    <thead class="tableHeader">
+      <tr>
+        <td class="tableHeaderName">Name</td>
+        <td class="tableHeaderName">Height</td>
+        <td class="tableHeaderName">Weight</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let character of this.characterList">
+        <td class="tableItem">{{character.name}}</td>
+        <td class="tableItem">{{character.height}}</td>
+        <td class="tableItem">{{character.mass}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #loading>
+  <app-loading class="displayCenter"></app-loading>
+</ng-template>
+
+<div class="displayCenter footer">
+  <div [ngClass]="{'hideButton': currentPage == 1}">
+    <button mat-stroked-button (click)="changePage(currentPage-1)">Prev</button>
+  </div>
+  <div [ngClass]="{'hideButton': currentPage == this.characterListService.totalPageCount+1}">
+    <button mat-stroked-button (click)="changePage(currentPage+1)">Next</button>
+  </div>
+</div>

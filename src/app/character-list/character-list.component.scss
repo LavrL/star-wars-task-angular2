@@ -1,0 +1,35 @@
+.inputForm {
+  height: 50px;
+  border-radius: 3px;
+  min-width: 80%;
+  font-size: 16px;
+}
+.hideButton {
+  display: none;
+}
+.displayCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.table {
+  &Header {
+    font-weight: 600;
+    &Name {
+      text-align: left;
+      border-bottom: solid 3px;
+    }
+  }
+  &Item {
+    text-align: left;
+    padding: 5px;
+    border-bottom: solid 2px lightgray;
+  }
+  &Container{
+    width: 80%;
+    margin-top: 50px;
+  }
+}
+.footer {
+  margin-top: 20px;
+}
